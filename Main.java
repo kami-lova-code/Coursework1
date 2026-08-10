@@ -9,6 +9,7 @@ public class Main {
         int[] departments = {1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1};
         int[] salaries = {50, 100, 150, 200, 300, 350, 400, 450, 60, 80, 90};
 
+
         for (int i = 0; i < names.length; i++) {
             Employee newEmp = new Employee(names[i], departments[i], salaries[i]);
             newEmp.printShortInfo();
