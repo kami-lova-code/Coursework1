@@ -1,7 +1,6 @@
 public class EmployeeBook {
     private final Employee[] employees = new Employee[10];
 
-
     public boolean addEmployee(Employee employee) {
         for (int i = 0; i < employees.length; i++) {
             if (employees[i] == null) {
@@ -11,7 +10,6 @@ public class EmployeeBook {
         }
         return false;
     }
-
 
 
     public void printAllEmployees() {
@@ -128,6 +126,7 @@ public class EmployeeBook {
         }
         return false;
     }
+
 
 
     public Employee getEmployeeById(int id) {
