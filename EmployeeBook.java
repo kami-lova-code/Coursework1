@@ -36,39 +36,40 @@ public class EmployeeBook {
     }
 
 
+
+
     public void printTaxes(String scheme) {
         double totalTax = 0.0;
         for (Employee e : employees) {
             if (e == null) {
-                break;
+                continue;
             }
-            double tax ;
+
             int salary = e.getSalary();
+            double tax = 0;
 
-        switch (scheme) {
-            case "PROPORTIONAL":
-                tax = salary * 0.13;
-                break;
-            case "PROGRESSIVE":
-                if (salary <= 150) {
-                    tax = salary * 0.13;
-                } else if (salary <= 350) {
-                    tax = salary * 0.17;
-                } else {
-                    tax = salary * 0.21;
-                }
-                break;
-            default:
-                System.out.println("Неизвестная схема рассчёта налогов");
-                return;
-        }
+            switch (scheme) {
+                case "PROPORTIONAL" -> tax = salary * 0.13;
+                case "PROGRESSIVE" -> tax = calculateProgressiveTax(salary);
+            }
 
-        totalTax += tax;
-            System.out.printf("Сотрудник: %s,зарплата: %d,налог: %.1f%n",
-                    e.getFullName(),salary,tax);
-        }
-        System.out.println("Итого налог по схеме " + totalTax + "\n");
+            totalTax += tax;
+            System.out.printf("Сотрудник: %s, зарплата: %d, налог: %.1f%n",
+                    e.getFullName(), salary, tax);
+        } // Конец цикла for
+
+        // 6. Выводим ИТОГО после цикла, но ВНУТРИ метода printTaxes
+        System.out.println("Итого налог по схеме: " + totalTax);
     }
+    private double calculateProgressiveTax(int salary) {
+        if (salary < 150) {
+            return salary * 0.13;
+        } else if (salary <= 350) {
+            return salary * 0.17;
+        } else {
+            return salary * 0.21;
+        }
+    } // <--- ЭТА СКОБКА была потеряна! Она закрывает calculateProgressiveTax// Конец метода printTaxes
 
 
 
